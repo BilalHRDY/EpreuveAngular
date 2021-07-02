@@ -1,0 +1,109 @@
+<div *ngIf="isLoading == false && joueurs" class="text-center">
+
+
+    <h1>Votre Equipe</h1>
+    <div>
+        <p>(Vous avez {{joueurs.length}} joueurs dans votre équipe.)</p>
+    </div>
+    <h2 class="my-5">Les Gardiens</h2>
+    <div class=" d-flex shadow">
+
+        <div *ngFor="let joueur of joueurs">
+
+
+            <div *ngIf="joueur.poste == 'gardien'" class="card" style="width: 13rem; margin-right: 30px;">
+                <img class="card-img-top size-card-image" style="height: 10rem;" src="{{joueur.image}}"
+                    alt=" Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{joueur.nom}} {{joueur.prenom}}</h5>
+                    <p class="card-text">{{joueur.poste}}</p>
+                    <a [routerLink]="['/joueur',joueur.id]" class="btn btn-info" style="width: 9rem;">Voir
+                        {{joueur.nom}}
+                    </a>
+                    <a class="btn btn-primary mt-2" *ngIf="joueur.id" (click)="delete(joueur.id)">Supprimer le
+                        joueur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="my-5">Les Défenseurs</h2>
+    <div class=" d-flex shadow">
+
+        <div *ngFor="let joueur of joueurs">
+
+
+
+            <div *ngIf="joueur.poste == 'defenseur'" class="card" style="width: 13rem; margin-right: 30px;">
+                <img class="card-img-top size-card-image" style="height: 10rem;" src="{{joueur.image}}"
+                    alt=" Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{joueur.nom}} {{joueur.prenom}}</h5>
+                    <p class="card-text">{{joueur.poste}}</p>
+                    <a [routerLink]="['/joueur',joueur.id]" class="btn btn-info" style="width: 9rem;">Voir
+                        {{joueur.nom}}
+                    </a>
+                    <a class="btn btn-primary mt-2" *ngIf="joueur.id" (click)="delete(joueur.id)">Supprimer le
+                        joueur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="my-5">Les Milieux de terrain</h2>
+    <div class="d-flex shadow">
+
+        <div *ngFor="let joueur of joueurs">
+
+            <div *ngIf="joueur.poste == 'milieu'" class="card" style="width: 13rem; margin-right: 20px;">
+                <img class="card-img-top size-card-image" style="height: 10rem;" src="{{joueur.image}}"
+                    alt=" Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{joueur.nom}} {{joueur.prenom}}</h5>
+                    <p class="card-text">{{joueur.poste}}</p>
+                    <a [routerLink]="['/joueur',joueur.id]" class="btn btn-info" style="width: 9rem;">Voir
+                        {{joueur.nom}}
+                    </a>
+                    <a class="btn btn-primary mt-2" *ngIf="joueur.id" (click)="delete(joueur.id)">Supprimer le
+                        joueur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h2 class="my-5">Les Attaquants</h2>
+    <div class=" d-flex shadow">
+
+        <div *ngFor="let joueur of joueurs">
+
+
+            <div *ngIf="joueur.poste == 'attaquant'" class="card " style="width: 13rem; margin-right: 20px;">
+                <img class="card-img-top size-card-image" style="height: 10rem; " src="{{joueur.image}}"
+                    alt=" Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{joueur.nom}} {{joueur.prenom}}</h5>
+                    <p class="card-text">{{joueur.poste}}</p>
+                    <a [routerLink]="['/joueur',joueur.id]" class="btn btn-info" style="width: 9rem;">Voir
+                        {{joueur.nom}}
+                    </a>
+                    <a class="btn btn-primary mt-2" *ngIf="joueur.id" (click)="delete(joueur.id)">Supprimer le
+                        joueur</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="joueurs && joueurs.length < 23">
+        <a [routerLink]="['/joueur/add']" class="btn btn-warning align-self-center mt-5">Ajouter
+            un joueur</a>
+    </div>
+    <br>
+    <div class="mt-5" *ngIf="joueurs && joueurs.length == 23">
+        <h3> Votre équipe compte déjà 23 joueurs, vous ne pouvez pas en rajouter !</h3>
+    </div>
+
+    <div *ngIf="isLoading" class="text-center">
+        <div class="spinner-border" role="status"> </div>
+        <span class="sr-only">Loading...</span>
+    </div>
+
+</div>

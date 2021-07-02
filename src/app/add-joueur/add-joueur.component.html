@@ -1,0 +1,57 @@
+<h1>Ajouter un joueur</h1>
+
+<form #validationFormJoueur="ngForm" (ngSubmit)="joueurSubmit()">
+
+    <div class="form-group">
+
+        <label for="nom">Nom du joueur</label>
+
+        <input #validationNom="ngModel" required name="nom" class="form-control" name="nom"
+            [(ngModel)]="joueurFormulaire.nom">
+        <div class="alert alert-danger" [hidden]="validationNom.valid">Erreur dans la saisie</div>
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="prenom">Prénom du joueur</label>
+        <input #validationPrenom="ngModel" required name="prenom" class="form-control" name="prenom"
+            [(ngModel)]="joueurFormulaire.prenom">
+        <div class="alert alert-danger" [hidden]="validationPrenom.valid">Erreur dans la saisie</div>
+    </div>
+
+
+
+    <div class="form-group">
+
+        <label for="image">URL de l'image du joueur</label>
+        <input name="image" type="text" class="form-control" #validationImage="ngModel" required name="image"
+            [(ngModel)]="joueurFormulaire.image">
+        <div class="alert alert-danger" [hidden]="validationImage.valid">Erreur dans la saisie</div>
+    </div>
+
+
+
+    <div class="form-group">
+
+        <label>Poste du joueur</label>
+        <select required name="poste" class="form-control" #validationType="ngModel"
+            [(ngModel)]="joueurFormulaire.poste">
+            <option [value]="undefined">Veuillez saisir un poste</option>
+            <option *ngFor="let poste of joueurPoste" [value]="poste">{{poste}}</option>
+        </select>
+
+        <div class="alert alert-danger" [hidden]="validationType.valid">Erreur dans la saisie</div>
+    </div>
+
+
+    <input [disabled]="!validationFormJoueur.valid" type="submit" class="btn btn-success mt-2">
+
+
+
+
+
+
+
+
+</form>

@@ -1,0 +1,20 @@
+<div *ngIf="!isLoading && joueur" class="text-center">
+
+    <h3>
+        Bienvenue sur la page du joueur {{joueur.nom}} {{joueur.prenom}}
+    </h3>
+    <div class="d-flex justify-content-center ">
+
+
+        <div class="card mt-5" style="width: 18rem;">
+
+            <img class="card-img-top size-card-image" src="{{joueur.image}}" alt=" Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{joueur.nom}} {{joueur.prenom}}</h5>
+                <p class="card-text">{{joueur.poste}}</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
